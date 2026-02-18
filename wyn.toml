@@ -1,0 +1,7 @@
+[project]
+name = "mysql"
+version = "0.1.0"
+description = "MySQL/MariaDB driver for Wyn (wraps libmysqlclient)"
+
+[build]
+requires = ["libmysqlclient"]  # brew install mysql / apt install libmysqlclient-dev

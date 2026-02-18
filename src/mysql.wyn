@@ -1,0 +1,28 @@
+// mysql — MySQL/MariaDB driver for Wyn
+// Requires: libmysqlclient (brew install mysql / apt install libmysqlclient-dev)
+//
+// Usage:
+//   var db = Mysql.connect("localhost", "root", "", "mydb")
+//   var rows = Mysql.query(db, "SELECT name FROM users")
+//   Mysql.exec(db, "INSERT INTO users (name) VALUES (?)", ["Alice"])
+//   Mysql.close(db)
+
+fn Mysql_connect(host: string, user: string, pass: string, dbname: string) -> int {
+    return mysql_native_connect(host, user, pass, dbname)
+}
+
+fn Mysql_query(conn: int, sql: string) -> string {
+    return mysql_native_query(conn, sql)
+}
+
+fn Mysql_exec(conn: int, sql: string, params: array) -> string {
+    var query = sql
+    for i in 0..params.len() {
+        query = query.replace_all("?", "'" + params[i] + "'")
+    }
+    return mysql_native_query(conn, query)
+}
+
+fn Mysql_close(conn: int) {
+    mysql_native_close(conn)
+}
