@@ -1,18 +1,26 @@
-fn main() -> int {
-    Test.init("MySQL Package")
-
+test "host" {
     // Connection string building
     var host = "localhost"
     var user = "root"
     var db = "mydb"
-    Test.assert_eq_str(host, "localhost", "host")
-    Test.assert_eq_str(user, "root", "user")
+    assert_eq(host, "localhost")
+}
 
+test "user" {
+    // Connection string building
+    var host = "localhost"
+    var user = "root"
+    var db = "mydb"
+    assert_eq(user, "root")
+}
+
+test "param sub" {
+    // Connection string building
+    var host = "localhost"
+    var user = "root"
+    var db = "mydb"
     // Parameter substitution
     var sql = "INSERT INTO users (name, age) VALUES (?, ?)"
     var q = sql.replace_all("?", "'test'")
-    Test.assert(q.contains("'test'"), "param sub")
-
-    Test.summary()
-    return 0
+    assert(q.contains("'test'"))
 }
