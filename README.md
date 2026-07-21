@@ -1,4 +1,4 @@
-# mysql — Official Wyn Package
+# mysql - Official Wyn Package
 
 MySQL/MariaDB driver for Wyn. Wraps libmysqlclient.
 

@@ -1,4 +1,4 @@
-// mysql_native.c — C glue between Wyn and libmysqlclient
+// mysql_native.c - C glue between Wyn and libmysqlclient
 // Compile: cc -c mysql_native.c $(mysql_config --cflags) -o mysql_native.o
 // Link:    $(mysql_config --libs)
 

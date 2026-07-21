@@ -1,4 +1,4 @@
-// mysql — MySQL/MariaDB driver for Wyn
+// mysql - MySQL/MariaDB driver for Wyn
 // Requires: libmysqlclient (brew install mysql / apt install libmysqlclient-dev)
 //
 // Usage:
