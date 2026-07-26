@@ -16,11 +16,23 @@ wyn pkg install github.com/wynlang/mysql
 ## Usage
 
 ```wyn
-var db = Mysql_connect("localhost", "root", "", "mydb")
-var rows = Mysql_query(db, "SELECT name FROM users")
-Mysql_exec(db, "INSERT INTO users (name) VALUES (?)", ["Alice"])
-Mysql_close(db)
+import mysql
+
+var db = mysql.Mysql_connect("localhost", "root", "", "mydb")
+mysql.Mysql_exec(db, "INSERT INTO users (name) VALUES (?)", ["Alice"])
+var rows = mysql.Mysql_query(db, "SELECT name FROM users")
+print(rows)
+mysql.Mysql_close(db)
 ```
+
+## API
+
+| Function | Description |
+|----------|-------------|
+| `Mysql_connect(host, user, pass, dbname)` | Connect, returns handle |
+| `Mysql_query(conn, sql)` | Run SQL, returns rows as newline/tab-separated string |
+| `Mysql_exec(conn, sql, params)` | Run SQL with `?` placeholders substituted from `params` |
+| `Mysql_close(conn)` | Close connection |
 
 ## Test
 

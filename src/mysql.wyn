@@ -7,6 +7,12 @@
 //   Mysql.exec(db, "INSERT INTO users (name) VALUES (?)", ["Alice"])
 //   Mysql.close(db)
 
+// ---- Native bindings (implemented in src/mysql_native.c) -------------------
+
+extern fn mysql_native_connect(host: string, user: string, pass: string, dbname: string) -> int;
+extern fn mysql_native_query(conn: int, sql: string) -> string;
+extern fn mysql_native_close(conn: int);
+
 pub fn Mysql_connect(host: string, user: string, pass: string, dbname: string) -> int {
     return mysql_native_connect(host, user, pass, dbname)
 }
